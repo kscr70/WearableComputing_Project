@@ -1,15 +1,15 @@
 #WearableComputing_Project
 Course project for Getting and Cleaning Data
 ##Location of files for analysis
-###Zipped files were downloaded using the link on the course project page. The location of the files can be found [here] (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+Zipped files were downloaded using the link on the course project page. The location of the files can be found [here] (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
 Date Downloaded:  "Wed Feb 11 21:44:03 2015"
 
-###Once download the file was unzipped and the folder named **"UCI HAR Dataset"** was placed in my working directory.
+Once download the file was unzipped and the folder named **"UCI HAR Dataset"** was placed in my working directory.
 
-###This script requires that there be a directory (or folder) labeled **"UCI HAR Dataset"** in your working directory.
+This script requires that there be a directory (or folder) labeled **"UCI HAR Dataset"** in your working directory.
 
-###The "UCI HAR Dataset" folder must include the following folders and files:
+The "UCI HAR Dataset" folder must include the following folders and files:
 
 1. folder labeled **train** with the files:
  * `subject_train.txt`

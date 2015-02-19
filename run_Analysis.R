@@ -61,4 +61,6 @@ melted <- melt(meanstdtbl, id=c("subjectid","activity"))
 
 tidy <- dcast(melted, subjectid+activity ~ variable, mean)
 
-write.table(tidy, "tidy.txt", sep = ",", row.names = FALSE)
+write.table(tidy, "tidy.txt", row.names = FALSE)
+
+checktable <- read.table("tidy.txt", header = TRUE)
