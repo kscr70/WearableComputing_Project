@@ -23,6 +23,8 @@ The "UCI HAR Dataset" folder must include the following folders and files:
 3. And these files directly in the **"UCI HAR Dataset folder"**:
  * `activity_labels.txt`
  * `features.txt`
+ 
+##run_Analysis.R
 
 ###Packages required.
 
@@ -30,7 +32,24 @@ The run_Analysis.r script requires two packages to be loaded.
   * [`reshape2`](http://cran.r-project.org/web/packages/reshape2/index.html)
   * [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html)
 
+###How the script works.
+1. read in the files from the UCI HAR Dataset folder
+     ``` 
+      xtrain <- read.table("UCI HAR Dataset/train/X_train.txt")
 
+      xtest <- read.table("UCI HAR Dataset/test/X_test.txt")
 
+      ytrain <- read.table("UCI HAR Dataset/train/y_train.txt")
+
+      ytest <- read.table("UCI HAR Dataset/test/y_test.txt")
+
+      trainsubjects <- read.table("UCI HAR Dataset/train/subject_train.txt")
+
+      testsubjects <- read.table("UCI HAR Dataset/test/subject_test.txt")
+
+      activity <- read.table("UCI HAR Dataset/activity_labels.txt")
+
+      features <- read.table("UCI HAR Dataset/features.txt")
+     ```
 
 
