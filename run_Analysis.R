@@ -1,6 +1,6 @@
 # load packages used in this script
 library("dplyr")
-
+library("reshape2")
 #read in the test files from the UCI HAR Dataset file
 xtrain <- read.table("UCI HAR Dataset/train/X_train.txt")
 
@@ -54,3 +54,11 @@ meanstdtbl$activityid <- factor(meanstdtbl$activityid, labels=c("Walking","Walki
 
 meanstdtbl <- rename(meanstdtbl, activity = activityid)
 
+## STEP 5: Creates a second, independent tidy data set with the
+## average of each variable for each activity and each subject.
+# create the tidy data set
+melted <- melt(meanstdtbl, id=c("subjectid","activity"))
+
+tidy <- dcast(melted, subjectid+activity ~ variable, mean)
+
+write.table(tidy, "tidy.txt", row.names = FALSE)
