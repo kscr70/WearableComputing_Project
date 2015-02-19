@@ -12,16 +12,16 @@ This script requires that there be a directory (or folder) labeled "UCI HAR Data
 The "UCI HAR Dataset" folder must include the following folders and files:
 
 1. folder labeled `train` with the files:
-..*`subject_train.txt`
-..*`X_train.txt`
-..*`y_train.txt`
+*`subject_train.txt`
+*`X_train.txt`
+*`y_train.txt`
 2. folder labeled `test` with the files:
-..*`subject_test.txt`
-..*`X_test.txt`
-..*`y_test.txt`
+*`subject_test.txt`
+*`X_test.txt`
+*`y_test.txt`
 3. And these files directly in the "UCI HAR Dataset folder":
-..*`activity_labels.txt`
-..*`features.txt`
+*`activity_labels.txt`
+*`features.txt`
 
 
 
