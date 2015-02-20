@@ -1,6 +1,6 @@
 #WearableComputing_Project
 ##Course project for Getting and Cleaning Data
-The data used in this projedt was collected from the the accelerometers from the Samsung Galaxy S smartphone. A full descritption of the can be found at the [site where the data was obtained.](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+The data used in this project was collected from the the accelerometers from the Samsung Galaxy S smartphone. A full descritption of the can be found at the [site where the data was obtained.](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
 ###Location of files for analysis
 Zipped files were downloaded using the link on the course project page. The location of the files can be found [here.] (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
@@ -33,7 +33,7 @@ The run_Analysis.r script requires two packages to be loaded.
   * [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html)
 
 ###How the script works.
-1. read in the files from the UCI HAR Dataset folder
+1. Read in the files from the UCI HAR Dataset folder
      ``` 
       xtrain <- read.table("UCI HAR Dataset/train/X_train.txt")
 
@@ -51,5 +51,54 @@ The run_Analysis.r script requires two packages to be loaded.
 
       features <- read.table("UCI HAR Dataset/features.txt")
      ```
+2. Assign column names to the imported data
+     ```
+     colnames(trainsubjects) <- "subjectid"
+     colnames(testsubjects) <- "subjectid"
 
+     colnames(activity) <- c("activityid", "activity")
 
+     colnames(ytest) <- "activityid"
+     colnames(ytrain) <- "activityid"
+
+     colnames(xtrain) <- features[,2]
+     colnames(xtest) <- features[,2]
+     ```
+3. combine all data into a single data set
+     ```
+     training_data <- cbind(trainsubjects, ytrain, xtrain)
+
+     test_data <- cbind(testsubjects, ytest, xtest)
+
+     alldata <- tbl_df(rbind(training_data, test_data))
+     ```
+4. Select only the measures of mean and standard deviation
+     ```
+     meanstdcols <- grepl("mean\\(\\)", names(alldata)) | grepl("std\\(\\)", names(alldata))
+
+     meanstdcols[1:2] <- TRUE
+
+     meanstdtbl <- alldata[,meanstdcols]
+     ```
+5. create descriptive names for the activities.
+     ```
+     meanstdtbl$activityid <- factor(meanstdtbl$activityid, labels=c("Walking","Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying"))
+
+     meanstdtbl <- rename(meanstdtbl, activity = activityid)
+     ```
+6. Create the independent tidy data set with the average of each variable for each activity and each subject.
+     ```
+     melted <- melt(meanstdtbl, id=c("subjectid","activity"))
+
+     tidy <- dcast(melted, subjectid+activity ~ variable, mean)
+
+     write.table(tidy, "tidy.txt", row.names = FALSE) #writes the tidy data set to a text file.
+
+     checktable <- read.table("tidy.txt", header = TRUE) #checks that the file is readable.
+     ```
+### Script output
+The output of the script is a text file `tidy.txt` that can be read into R with: `read.table("tidy.txt", header = TRUE)`
+
+This final data set is in a wide format with 180 observations and 68 variables. 
+
+The variable descriptions can be found in the [CodeBook.md](../CodeBook.md)
