@@ -1,5 +1,34 @@
 #Code Book for Wearable Computing Project
 
+##Original data location
+A description of the original data set used for this project can be found at the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+
+The original data can be found [here.](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/)
+
+##Files used for the current project:
+
+* `features_info.txt`: Shows information about the variables used on the feature vector.
+
+* `features.txt`: Names of all 561 features.
+
+* `activity_labels.txt`: Links the class labels with their activity name.
+
+* `train/X_train.txt`: Training set. 7352 observations of the 561 features for 21 of the 30 participants.
+
+* `train/y_train.txt`': Training labels. Subject ID lablels for all observations in the training set.
+
+* `test/X_test.txt`: Test set.  7352 observations of the 561 features for 19 of the 30 participants.
+
+* `test/y_test.txt`: Test labels. Subject ID lablels for all observations in the test set.
+
+* `train/subject_train.txt`: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
+* `train/subject_test.txt`: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+
+More information about the data files and and features are available from the `README.txt` and in the `features_info.txt` files in the [original data](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/). The text from each of those files is also available at the bottom of this Code Book. 
+
+
+
 ##The README file from the downloaded data.
 This text file describes the experiments and the file organization.
 ```
