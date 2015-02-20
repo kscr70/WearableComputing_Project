@@ -49,14 +49,14 @@ meanstdcols[1:2] <- TRUE
 
 meanstdtbl <- alldata[,meanstdcols]
 
-##create descriptive names for the activity.
+##create descriptive names for the activities.
 
 meanstdtbl$activityid <- factor(meanstdtbl$activityid, labels=c("Walking","Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying"))
 
-meanstdtbl <- rename(meanstdtbl, activity = activityid)
+meanstdtbl <- rename(meanstdtbl, activity = activityid) #requires dplyr package
 
 
-## create the independent tidy data set with the average of each variable for each activity and each subject. 
+## create the independent tidy data set with the average of each variable for each activity and each subject(melt and dcast require the reshape2 package). 
 melted <- melt(meanstdtbl, id=c("subjectid","activity"))
 
 tidy <- dcast(melted, subjectid+activity ~ variable, mean)
