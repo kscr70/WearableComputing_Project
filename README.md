@@ -84,9 +84,9 @@ The run_Analysis.r script requires two packages to be loaded.
      ```
      meanstdtbl$activityid <- factor(meanstdtbl$activityid, labels=c("Walking","Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying"))
 
-     meanstdtbl <- rename(meanstdtbl, activity = activityid)
+     meanstdtbl <- rename(meanstdtbl, activity = activityid) #requires dplyr package
      ```
-6. Create the independent tidy data set with the average of each variable for each activity and each subject.
+6. Create the independent tidy data set with the average of each variable for each activity and each subject (melt and dcast require the reshape2 package).
      ```
      melted <- melt(meanstdtbl, id=c("subjectid","activity"))
 
