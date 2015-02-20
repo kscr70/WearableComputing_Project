@@ -33,7 +33,7 @@ The run_Analysis.r script requires two packages to be loaded.
   * [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html)
 
 ###How the script works.
-1. **Read in the files from the UCI HAR Dataset folder**
+1. **Read in the files from the "UCI HAR Dataset folder"**
      ``` 
       xtrain <- read.table("UCI HAR Dataset/train/X_train.txt")
 
@@ -51,7 +51,7 @@ The run_Analysis.r script requires two packages to be loaded.
 
       features <- read.table("UCI HAR Dataset/features.txt")
      ```
-2. Assign column names to the imported data
+2. **Assign column names to the imported data**
      ```
      colnames(trainsubjects) <- "subjectid"
      colnames(testsubjects) <- "subjectid"
@@ -64,7 +64,7 @@ The run_Analysis.r script requires two packages to be loaded.
      colnames(xtrain) <- features[,2]
      colnames(xtest) <- features[,2]
      ```
-3. combine all data into a single data set
+3. **combine all data into a single data set**
      ```
      training_data <- cbind(trainsubjects, ytrain, xtrain)
 
@@ -72,7 +72,7 @@ The run_Analysis.r script requires two packages to be loaded.
 
      alldata <- tbl_df(rbind(training_data, test_data))
      ```
-4. Select only the measures of mean and standard deviation
+4. **Select only the measures of mean and standard deviation**
      ```
      meanstdcols <- grepl("mean\\(\\)", names(alldata)) | grepl("std\\(\\)", names(alldata))
 
@@ -80,13 +80,13 @@ The run_Analysis.r script requires two packages to be loaded.
 
      meanstdtbl <- alldata[,meanstdcols]
      ```
-5. create descriptive names for the activities.
+5. **Create descriptive names for the activities.**
      ```
      meanstdtbl$activityid <- factor(meanstdtbl$activityid, labels=c("Walking","Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying"))
 
      meanstdtbl <- rename(meanstdtbl, activity = activityid) #requires dplyr package
      ```
-6. Create the independent tidy data set with the average of each variable for each activity and each subject (melt and dcast require the reshape2 package).
+6. **Create the independent tidy data set with the average of each variable for each activity and each subject (melt and dcast require the reshape2 package).**
      ```
      melted <- melt(meanstdtbl, id=c("subjectid","activity"))
 
@@ -99,6 +99,6 @@ The run_Analysis.r script requires two packages to be loaded.
 ### Script output
 The output of the script is a text file `tidy.txt` that can be read into R with: `read.table("tidy.txt", header = TRUE)`
 
-This final data set is in a wide format with 180 observations and 68 variables. 
+This final data set is in a wide format with 180 observations(30 subjects and 6 activities) and 68 variables. 
 
 The variable descriptions can be found in the [CodeBook.md](../master/CodeBook.md)
