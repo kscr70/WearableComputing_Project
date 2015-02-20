@@ -15,11 +15,11 @@ The original data can be found [here.](http://archive.ics.uci.edu/ml/machine-lea
 
 * `train/X_train.txt`: Training set. 7352 observations of the 561 features for 21 of the 30 participants.
 
-* `train/y_train.txt`': Training labels. Subject ID lablels for all observations in the training set.
+* `train/y_train.txt`': Training labels. Activity lablels for all observations in the training set.
 
 * `test/X_test.txt`: Test set.  7352 observations of the 561 features for 19 of the 30 participants.
 
-* `test/y_test.txt`: Test labels. Subject ID lablels for all observations in the test set.
+* `test/y_test.txt`: Test labels. Activity lablels for all observations in the test set.
 
 * `train/subject_train.txt`: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
 
@@ -27,6 +27,27 @@ The original data can be found [here.](http://archive.ics.uci.edu/ml/machine-lea
 
 More information about the data files and and features are available from the `README.txt` and in the `features_info.txt` files in the [original data](http://archive.ics.uci.edu/ml/machine-learning-databases/00240/). The text from each of those files is also available at the bottom of this Code Book. 
 
+##Data Processing Steps
+
+1.  The zipped data files were download from the [Getting and Cleaning Data course project page](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip ).  The files were extracted and the "UCI HAR Dataset" folder was placed into the R working directory.
+
+2.  The data files listed above were read into data frames.
+
+3.  appropiate column headers were added to the data sets.
+
+4.  **Combine all Data**
+        *  The training data and corresponding subject id's and activity id's were combined to create a single training data table. 
+        *  The test data and corresponding subject id's and activity id's were combined into a single test data table. 
+        *  The training and test data sets were then combined into a single large data frame.
+
+
+5.  Select only the features of mean and standard deviation.
+
+6.  Convert the activity variable into a factor with descriptive activity names.
+
+7.  Create the independent tidy data set with the average of each variable for each activity and each subject(melt and dcast require the reshape2 package).
+
+8. Write the final tide data set to the `tidy.txt` file.
 
 
 ##The README file from the downloaded data.
