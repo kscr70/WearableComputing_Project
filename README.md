@@ -33,7 +33,7 @@ The run_Analysis.r script requires two packages to be loaded.
   * [`dplyr`](http://cran.r-project.org/web/packages/dplyr/index.html)
 
 ###How the script works.
-1. Read in the files from the UCI HAR Dataset folder
+1. **Read in the files from the UCI HAR Dataset folder**
      ``` 
       xtrain <- read.table("UCI HAR Dataset/train/X_train.txt")
 
