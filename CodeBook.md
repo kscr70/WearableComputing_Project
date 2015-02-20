@@ -35,10 +35,10 @@ More information about the data files and and features are available from the `R
 
 3.  appropiate column headers were added to the data sets.
 
-4.  Combine all Data
-        *  The training data and corresponding subject id's and activity id's were combined to create a single training data table. 
-        *  The test data and corresponding subject id's and activity id's were combined into a single test data table. 
-        *  The training and test data sets were then combined into a single large data frame.
+4.  Combine all Data.
+        *The training data and corresponding subject id's and activity id's were combined to create a single training data table. 
+        *The test data and corresponding subject id's and activity id's were combined into a single test data table. 
+        *The training and test data sets were then combined into a single large data frame.
 
 
 5.  Select only the features of mean and standard deviation.
