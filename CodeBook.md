@@ -54,9 +54,9 @@ Steps 2 through 8 can be completed by running the [run_Analysis.R script.](../ma
 ##Variables
 There are 180 observations of 68 variables
 
-Variable 1.  Subjectid is an integer between 1 and 30
+Variable 1.  subjectid is an integer between 1 and 30 representing each individual in the study.
 
-Variable 2. activity is a factor variable with 6 activityies
+Variable 2. activity is a factor variable with 6 activities.
   1. Walking
   2. Walking Upstairs
   3. Walking Downstairs
@@ -64,7 +64,7 @@ Variable 2. activity is a factor variable with 6 activityies
   5. Standing
   6. Laying
   
-Variable 3 through 68 are the mean values for each subject and each activty of the mean and standard deviation for each of the features.  Specific information on each feature type are in the `features_info.txt` provided below.  All values are normalized to fall within -1.0 and 1.0.
+Variables 3 - 68 are the mean values for each subject and each activty of the mean and standard deviation for each of the features from the original data set.  Specific information on each feature type are in the `features_info.txt` provided below.  All values are normalized to fall within -1.0 and 1.0.
 
 ##The README file from the downloaded data.
 This text file describes the experiments and the file organization.
